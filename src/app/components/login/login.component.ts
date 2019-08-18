@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   error: string;
-  form: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.min(4)]),
-    password: new FormControl('', [Validators.required, Validators.min(4)]),
-  });
+  form: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    this.form = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.min(4)]),
+      password: new FormControl('', [Validators.required, Validators.min(4)]),
+    });
+   }
 
   ngOnInit() {
   }
