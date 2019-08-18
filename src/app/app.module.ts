@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
+
+/** Angular Material */
+import { MaterialModule} from './material.module'
 
 import { AppComponent } from './app.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MainNavComponent } from './components/main-nav/main-nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -17,16 +18,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     MainNavComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    LayoutModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
