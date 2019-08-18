@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.min(4)]),
   });
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,9 +22,15 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       console.log("form", this.form.value)
+      this.router.navigate(['/dashboard'])
     } else {
       this.error = 'Username or Password invalid.'
       console.log("Error:", this.form)
     }
+  }
+
+  onRegister() {
+    console.log("Register..")
+    this.router.navigate(['/register']);
   }
 }
