@@ -21,7 +21,12 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>some-test</span>
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="assets/images/logo.png">
+        </a>
+      </div>
+      <span>Test</span>
       <span class="menu-spacer"></span>
       <div  [ngClass]="{'hidden': isHandset$ | async}">
           <a mat-button href="#">Link 1</a>
