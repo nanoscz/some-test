@@ -22,6 +22,7 @@ import { UserService } from './services/user.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthService } from './services/auth.service';
 import { LoginGuard } from './guards/login.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LoginGuard } from './guards/login.guard';
     LoginComponent,
     DashboardComponent,
     SettingsComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotFoundComponent
   ],
   imports: [
   BrowserModule,
