@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { RegisterComponent } from './components/register/register.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
