@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+
+import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
       private router: Router,
-      public userService: UserService,
+      public authService: AuthService,
       public localStorageService: LocalStorageService
     ) {
     this.form = new FormGroup({
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       const formValue = this.form.value;
-      this.userService.login(formValue.username, formValue.password)
+      this.authService.login(formValue.username, formValue.password)
         .then((res: any) => {
           if (!res) {
             this.error = 'Username or Password invalid.';
