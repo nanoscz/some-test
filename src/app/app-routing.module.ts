@@ -7,10 +7,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import { LoginGuard } from './guards/login.guard';
+import { DashboardGuard } from './guards/dashboard.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent, canActivate: [DashboardGuard]},
   { path: 'register', component: RegisterComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard]},
   { path: 'settings', component: SettingsComponent},
