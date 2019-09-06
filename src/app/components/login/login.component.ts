@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +13,14 @@ export class LoginComponent implements OnInit {
   error: string;
   form: FormGroup;
 
-  constructor(private router: Router) {
+  constructor(
+      private router: Router,
+      public userService: UserService,
+      public localStorageService: LocalStorageService
+    ) {
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.min(4)]),
-      password: new FormControl('', [Validators.required, Validators.min(4)]),
+      username: new FormControl('fer', [Validators.required, Validators.min(4)]),
+      password: new FormControl('123123', [Validators.required, Validators.min(4)]),
     });
    }
 
@@ -23,8 +29,18 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log('form', this.form.value);
-      this.router.navigate(['/dashboard']);
+      const formValue = this.form.value;
+      this.userService.login(formValue.username, formValue.password)
+        .then((res: any) => {
+          if (!res) {
+            this.error = 'Username or Password invalid.';
+          } else {
+            this.localStorageService.set('account', JSON.stringify(res.user));
+            this.localStorageService.set('token', JSON.stringify(res.token));
+            this.router.navigate(['/dashboard']);
+          }
+        })
+        .catch(err => console.log(err));
     } else {
       this.error = 'Username or Password invalid.';
       console.log('Error:', this.form);
