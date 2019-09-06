@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.models';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,14 +12,10 @@ import { User } from '../../models/user.models';
 export class RegisterComponent implements OnInit {
   error: string;
   form: FormGroup;
-  user: {
-    username: '',
-    password: '',
-    email: '',
-    ci: '',
-    type: 'normal'
-  };
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    public userService: UserService
+  ) {
     this.form = new FormGroup({
       username: new FormControl('nanoscz', [Validators.required]),
       fullname: new FormControl('Fernando Castillo Torrico', [Validators.required]),
@@ -41,9 +38,12 @@ export class RegisterComponent implements OnInit {
         formValue.email,
         formValue.ci
       );
-      console.log(user);
-      this.error = '';
-      // this.onLogin();
+      this.userService.register(user)
+        .then(() => {
+          this.error = '';
+          this.onLogin();
+        })
+        .catch(err => console.log(err));
     } else {
       this.error = 'Error in register.';
       console.log('Error:', this.form);
