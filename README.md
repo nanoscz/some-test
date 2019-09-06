@@ -2,13 +2,37 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
+## Generate new service
+ng g s services/[nameService]
+
+## Generate new component
+ng g c components/[nameComponente] --module app
+
+## Generate new guard
+ng g g guards/login
+
+``` js
+  export class LoginGuard implements CanActivate {
+    constructor(
+      public router: Router,
+      public authService: AuthService
+      ) {}
+    canActivate(): boolean {
+      if (!this.authService.isLogged()) {
+        this.router.navigate(['/login']);
+        return false;
+      }
+      return true;
+    }
+  }
+```
 ## Material-nav
 
 ng generate @angular/material:material-nav --name="main-nav"
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
