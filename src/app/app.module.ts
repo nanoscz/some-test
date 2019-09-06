@@ -20,6 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
 /** Services */
 import { UserService } from './services/user.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { AuthService } from './services/auth.service';
+import { LoginGuard } from './guards/login.guard';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { LocalStorageService } from './services/local-storage.service';
   ],
   providers: [
     UserService,
-    LocalStorageService
+    AuthService,
+    LocalStorageService,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })
