@@ -21,12 +21,6 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  login(username: string, password: string) {
-    return this.http.post('/v1/login', {username, password})
-      .toPromise()
-      .catch(this.handleError);
-  }
-
   register(user: User) {
     return this.http.post(this.baseUrl, user)
       .toPromise()
