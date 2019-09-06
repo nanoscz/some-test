@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.models';
-import { UserService } from 'src/app/services/user.service';
 
+import { UserService } from 'src/app/services/user.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +15,8 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
   constructor(
     private router: Router,
-    public userService: UserService
+    public userService: UserService,
+    public localStorage: LocalStorageService
   ) {
     this.form = new FormGroup({
       username: new FormControl('nanoscz', [Validators.required]),
@@ -38,16 +40,21 @@ export class RegisterComponent implements OnInit {
         formValue.email,
         formValue.ci
       );
+      console.log(user);
       this.userService.register(user)
         .then(() => {
           this.error = '';
-          this.onLogin();
+
+          this.onDashboard();
         })
-        .catch(err => console.log(err));
+        .catch(err => this.error = err.message);
     } else {
       this.error = 'Error in register.';
       console.log('Error:', this.form);
     }
+  }
+  onDashboard() {
+    this.router.navigate(['/dashboard']);
   }
   onLogin() {
     this.router.navigate(['/login']);
