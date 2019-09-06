@@ -2,14 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
-## Generate new service
-ng g s services/[nameService]
+### Generate new service
+    ng g s services/[nameService]
 
-## Generate new component
-ng g c components/[nameComponente] --module app
+### Generate new component
+    ng g c components/[nameComponente] --module app
 
-## Generate new guard
-ng g g guards/login
+### Generate new guard
+    ng g g guards/login
 
 ``` js
   export class LoginGuard implements CanActivate {
@@ -26,9 +26,9 @@ ng g g guards/login
     }
   }
 ```
-## Material-nav
+### Material-nav
 
-ng generate @angular/material:material-nav --name="main-nav"
+    ng generate @angular/material:material-nav --name="main-nav"
 
 ## Development server
 
