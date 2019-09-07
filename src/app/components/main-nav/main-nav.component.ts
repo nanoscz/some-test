@@ -25,7 +25,7 @@ export class MainNavComponent {
     public authService: AuthService,
     public router: Router,
   ) {
-    this.isLogged = this.authService.isLogged()
+    this.isLogged = this.authService.isLogged();
   }
 
   logout() {
