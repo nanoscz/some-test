@@ -30,3 +30,10 @@ $some-test-theme: mat-light-theme($some-test-primary, $some-test-accent, $some-t
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container{
+  background-color: #fff;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
