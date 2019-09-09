@@ -11,6 +11,8 @@ import { InternalServerComponent } from './components/internal-server/internal-s
 
 /** childrens */
 import { TestComponent } from './components/pages/test/test.component';
+import { TestAddComponent } from './components/pages/test-add/test-add.component';
+
 /** Guards */
 import { LoginGuard } from './guards/login.guard';
 import { DashboardGuard } from './guards/dashboard.guard';
@@ -21,7 +23,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [LoginGuard],
     children: [
-    { path: 'test', component: TestComponent}
+    { path: 'test', component: TestComponent },
+    { path: 'test/add', component: TestAddComponent},
+    { path: '', redirectTo: '/dashboard/test', pathMatch: 'full'},
   ]},
   { path: 'settings', component: SettingsComponent, canActivate: [LoginGuard]},
   { path: 'error-internal-server', component: InternalServerComponent},
