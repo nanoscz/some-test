@@ -24,6 +24,7 @@ import { AuthService } from './services/auth.service';
 import { LoginGuard } from './guards/login.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InternalServerComponent } from './components/internal-server/internal-server.component';
+import { TestComponent } from './components/pages/test/test.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InternalServerComponent } from './components/internal-server/internal-s
     SettingsComponent,
     RegisterComponent,
     NotFoundComponent,
-    InternalServerComponent
+    InternalServerComponent,
+    TestComponent
   ],
   imports: [
   BrowserModule,
