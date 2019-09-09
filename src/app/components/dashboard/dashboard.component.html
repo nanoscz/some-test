@@ -1,20 +1,21 @@
 <div class="container">
-  <h1>Questionnaire</h1>
+  <h1>Tests</h1>
   <div class="content-flex">
     <div class="item-flex">
       <mat-card>
         <mat-card-content class="card-flex">
           <mat-icon class="icon-display">add</mat-icon>
-          <p>Add questionnaire</p>
+          <p>Add test</p>
         </mat-card-content>
       </mat-card>
     </div>
-    <div *ngFor="let item of [1,2,3,4,5,6]" class="item-flex">
+    <div *ngFor="let test of tests" class="item-flex">
       <mat-card>
-        <mat-card-subtitle>Questionaire</mat-card-subtitle>
+        <mat-card-subtitle>{{ test.name | uppercase }}</mat-card-subtitle>
         <mat-card-content>
-          <p>question {{item}}</p>
+          <p>{{ test.type }}</p>
         </mat-card-content>
+        <mat-card-footer> {{ test.createdAt | date }}</mat-card-footer>
       </mat-card>
     </div>
   </div>

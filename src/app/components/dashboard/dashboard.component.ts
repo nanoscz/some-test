@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestService } from 'src/app/services/test.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  items = [1, 2, 3, 4, 5];
-  constructor() { }
+  public tests: any;
+  constructor(public testService: TestService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.tests = await this.testService.findAll().catch(this.handleError.bind(this));
+  }
+
+  handleError(error) {
+    console.error(error);
   }
 
 }
+
