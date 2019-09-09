@@ -1,0 +1,18 @@
+.content-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center
+}
+
+.text-number {
+  font-size: 100px;
+  margin: 10% 5% 0;
+}
+
+.text-message {
+  color: rgb(130, 130, 130);
+  font-style: italic;
+}
+

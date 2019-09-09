@@ -23,6 +23,7 @@ import { LocalStorageService } from './services/local-storage.service';
 import { AuthService } from './services/auth.service';
 import { LoginGuard } from './guards/login.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InternalServerComponent } from './components/internal-server/internal-server.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     DashboardComponent,
     SettingsComponent,
     RegisterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    InternalServerComponent
   ],
   imports: [
   BrowserModule,

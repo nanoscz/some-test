@@ -15,15 +15,15 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-      private router: Router,
-      public authService: AuthService,
-      public localStorageService: LocalStorageService
-    ) {
+    private router: Router,
+    public authService: AuthService,
+    public localStorageService: LocalStorageService
+  ) {
     this.form = new FormGroup({
       username: new FormControl('fer', [Validators.required, Validators.min(4)]),
       password: new FormControl('123123', [Validators.required, Validators.min(4)]),
     });
-   }
+  }
 
   ngOnInit() {
   }
@@ -41,11 +41,15 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/dashboard']);
           }
         })
-        .catch(err => console.log(err));
+        .catch(this.handlerInternalServerError.bind(this));
     } else {
       this.error = 'Username or Password invalid.';
       console.log('Error:', this.form);
     }
+  }
+
+  handlerInternalServerError(err: any) {
+    this.router.navigate(['/error-internal-server', { error: err.message }]);
   }
 
   onRegister() {
