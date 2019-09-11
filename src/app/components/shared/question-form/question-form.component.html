@@ -5,31 +5,34 @@
       <input matInput placeholder="What is the question?" formControlName="query" required>
       <mat-error *ngIf="questionForm.controls.query.invalid">{{getErrorMessage('query')}}</mat-error>
     </mat-form-field>
-    <a mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
+    <a mat-icon-button (click)="clearQuestion()">
+      <mat-icon>clear</mat-icon>
     </a>
   </div>
-  <mat-menu #menu="matMenu">
-    <a mat-menu-item (click)="clearQuestion()">
-      <mat-icon>clear</mat-icon>Question
-    </a>
-    <a mat-menu-item>
-      <mat-icon>add</mat-icon>Answers
-    </a>
-    <a mat-menu-item>
-      <mat-icon>remove</mat-icon>Answers
-    </a>
-    <a mat-menu-item>
+  <div class="answers ml-answers">
+    <div class="answers-title">
+      <div class="answers-subtitle">
+        <h3>Answers</h3>
+        <a (click)="addAnswers()">
+          <mat-icon>add_box</mat-icon>
+        </a>
+      </div>
       <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
-      <!-- <mat-icon>check_box</mat-icon>Multiple Choice  -->
-    </a>
-  </mat-menu>
-  <div class="answers ml-32">
-    <h3>Answers</h3>
+    </div>
     <div class="answers-content">
+      <div class="empty" *ngIf="!questionForm.controls['answersForm'].controls.length">
+        <a mat-button (click)="addAnswers()">
+          <mat-icon class="icon-display">add</mat-icon>
+          Add Answers
+        </a>
+      </div>
       <div class="answers-item" formArrayName="answersForm"
         *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
+
         <app-answers-form [answersForm]=questionForm.controls.answersForm.controls[i]></app-answers-form>
+        <div class="item-actions">
+          <a mat-button (click)="removeAnswers(i)"> DELETE </a>
+        </div>
       </div>
     </div>
   </div>

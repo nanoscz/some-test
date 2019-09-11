@@ -16,16 +16,24 @@ export class QuestionFormComponent implements OnInit {
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    const answersForm = <FormArray>this.questionForm.controls['answersForm'];
-    for (let index = 0; index < 3; index++) {
-      const newGroup = this.fb.group({
-        text: ['', [Validators.required]],
-        points: [0, [Validators.required]],
-        question_id: null
-      });
-      answersForm.push(newGroup);
-    }
   }
+
+  addAnswers() {
+    const answersForm = <FormArray>this.questionForm.controls['answersForm'];
+    const newGroup = this.fb.group({
+      text: ['', [Validators.required]],
+      points: [0, [Validators.required]],
+      question_id: null
+    });
+    answersForm.push(newGroup);
+  }
+
+  removeAnswers(index) {
+    const answersForm = <FormArray>this.questionForm.controls['answersForm'];
+    answersForm.removeAt(index);
+    this.showMessage(`Answers #${index + 1} has been deleted.`, 2000);
+  }
+
   clearQuestion(): void {
     this.deleteQuestion.emit({ index: this.numberQuestion });
     this.showMessage(`Question #${this.numberQuestion + 1} has been deleted.`, 2000);
