@@ -29,6 +29,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InternalServerComponent } from './components/internal-server/internal-server.component';
 import { TestComponent } from './components/pages/test/test.component';
 import { TestAddComponent } from './components/pages/test-add/test-add.component';
+import { AnswersFormComponent } from './components/shared/answers-form/answers-form.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TestAddComponent } from './components/pages/test-add/test-add.component
     InternalServerComponent,
     TestComponent,
     TestAddComponent,
-    QuestionFormComponent
+    QuestionFormComponent,
+    AnswersFormComponent
   ],
   imports: [
   BrowserModule,
