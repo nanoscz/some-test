@@ -4,12 +4,24 @@
     <mat-form-field>
       <input matInput placeholder="What is the question?" formControlName="query">
     </mat-form-field>
+    <a mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </a>
   </div>
-  <div class="query-options ml-32">
-    <mat-form-field>
-      <input (change)="changeInput($event)" formControlName="number"
-        type="number" min="2" max="5" matInput placeholder="Number of responses">
-    </mat-form-field>
-    <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item>
+      <mat-icon>add</mat-icon>Answers
+    </a>
+    <a mat-menu-item>
+      <mat-icon>remove</mat-icon>Answers
+    </a>
+    <a mat-menu-item>
+      <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
+    </a>
+  </mat-menu>
+  <div formArrayName="answersForm"
+    *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
+    <app-answers-form [answersForm]=questionForm.controls.answersForm.controls[i]></app-answers-form>
   </div>
+
 </form>

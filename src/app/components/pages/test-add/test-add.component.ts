@@ -30,6 +30,7 @@ export class TestAddComponent implements OnInit {
       type: ['normal', [Validators.required]],
       questionsForm: this.fb.array([])
     });
+    this.addQuestion();
   }
 
   onSubmit() {
@@ -40,8 +41,9 @@ export class TestAddComponent implements OnInit {
     const questionsForm = <FormArray>this.form.controls['questionsForm'];
     const newGroup = this.fb.group({
       query: ['', [Validators.required]],
-      number: [3, [Validators.required]],
-      multiple: [false]
+      number: [0, [Validators.required]],
+      multiple: [false],
+      answersForm: this.fb.array([])
     });
     questionsForm.push(newGroup);
   }
