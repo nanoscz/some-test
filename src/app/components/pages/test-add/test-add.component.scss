@@ -1,9 +1,6 @@
 .test {
   display: flex;
-  .mat-form-field{
-    margin-right: 10px;
-    flex: 1
-  }
+  flex-direction: column;
 }
 
 .questionnaire-title {
@@ -22,48 +19,7 @@
   }
 }
 
-.answers {
-  font-weight: 400;
-  font-size: 15px;
-}
 
-.answers-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  background-color: #f7f7f7;
-  padding: 20px;
-  border-radius: 3px;
-}
-
-.answers-item {
-  flex: 1 0 0;
-  border-style: dotted;
-  border-color: #000;
-  border-width: 1.5px;
-  margin: 5px 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .mat-form-field {
-    width: 90%;
-  }
-}
-
-.item-img {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.data-img {
-  flex: 1 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 // .data-img:nth-child(1) {
 //   // background: red;
 //   display: flex;
