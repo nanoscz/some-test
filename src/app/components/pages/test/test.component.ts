@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class TestComponent implements OnInit {
   public tests: any;
-  public baseUrl: string; 
+  public baseUrl: string;
   constructor(public testService: TestService, public router: Router) { }
   async ngOnInit() {
     this.baseUrl = this.router.url;

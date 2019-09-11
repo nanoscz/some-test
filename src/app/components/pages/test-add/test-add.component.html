@@ -1,3 +1,37 @@
-<div class="container-test-add">
-  <h1>Register Test</h1>
+<div class="wrapper">
+  <h2>New Test</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Form test -->
+    <div class="test">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Description" formControlName="description">
+      </mat-form-field>
+    </div>
+
+    <div class="questionnaire-title">
+      <h2>Questionnaire</h2>
+    </div>
+
+    <!-- quesrion form -->
+    <div  class="questionnaire-content" formArrayName="questionsForm"
+         *ngFor="let control of form.controls['questionsForm'].controls; let i = index">
+         <app-question-form [questionForm]="form.controls.questionsForm.controls[i]"
+          [numberQuestion]="i + 1">
+        </app-question-form>
+         <a mat-button (click)="removeQuestion(i)"> REMOVE </a>
+    </div>
+
+    <div class="form-action">
+      <a mat-button (click)="toBack()"> CANCEL </a>
+      <div class="btn-actions">
+        
+        <a mat-button (click)="addQuestion()"> ADD </a>
+        <button mat-button color="primary"> SAVE </button>
+      </div>
+    </div>
+
+  </form>
 </div>
