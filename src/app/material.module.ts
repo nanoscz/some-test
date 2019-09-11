@@ -7,7 +7,9 @@ import {
   MatListModule,
   MatButtonModule,
   MatCardModule,
-  MatInputModule
+  MatInputModule,
+  MatFormFieldModule,
+  MatCheckboxModule
  } from '@angular/material';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -20,7 +22,9 @@ const modules = [
   MatButtonModule,
   LayoutModule,
   MatCardModule,
-  MatInputModule
+  MatInputModule,
+  MatFormFieldModule,
+  MatCheckboxModule
 ];
 
 @NgModule({
