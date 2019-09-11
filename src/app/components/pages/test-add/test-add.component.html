@@ -18,12 +18,11 @@
     </div>
 
     <!-- quesrion form -->
-    <div  class="questionnaire-content" formArrayName="questionsForm"
+    <div class="questionnaire-content" formArrayName="questionsForm"
          *ngFor="let control of form.controls['questionsForm'].controls; let i = index">
          <app-question-form [questionForm]="form.controls.questionsForm.controls[i]"
-          [numberQuestion]="i + 1">
+          [numberQuestion]="i" (deleteQuestion)="deleteQuestion($event)">
         </app-question-form>
-         <a mat-button (click)="removeQuestion(i)"> REMOVE </a>
     </div>
 
     <div class="form-action">

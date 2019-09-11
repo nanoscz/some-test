@@ -43,6 +43,11 @@ export class TestAddComponent implements OnInit {
     return this.form.controls[type].hasError('required') ? 'You must enter a value' : '';
   }
 
+  deleteQuestion($event) {
+    const index = $event.index;
+    const questionsForm = <FormArray>this.form.controls['questionsForm'];
+    questionsForm.removeAt(index);
+  }
   addQuestion() {
     const questionsForm = <FormArray>this.form.controls['questionsForm'];
     const newGroup = this.fb.group({
@@ -53,10 +58,6 @@ export class TestAddComponent implements OnInit {
     questionsForm.push(newGroup);
   }
 
-  removeQuestion(index): void {
-    const questionsForm = <FormArray>this.form.controls['questionsForm'];
-    questionsForm.removeAt(index);
-  }
 
   toBack() {
     this.router.navigate(['/dashboard/test']);

@@ -1,6 +1,6 @@
 <form [formGroup]="questionForm">
   <div class="query">
-    <span> {{ numberQuestion }}.- </span>
+    <span> {{ numberQuestion + 1 }}.- </span>
     <mat-form-field>
       <input matInput placeholder="What is the question?" formControlName="query" required>
       <mat-error *ngIf="questionForm.controls.query.invalid">{{getErrorMessage('query')}}</mat-error>
@@ -10,6 +10,9 @@
     </a>
   </div>
   <mat-menu #menu="matMenu">
+    <a mat-menu-item (click)="clearQuestion()">
+      <mat-icon>clear</mat-icon>Question
+    </a>
     <a mat-menu-item>
       <mat-icon>add</mat-icon>Answers
     </a>
@@ -18,13 +21,14 @@
     </a>
     <a mat-menu-item>
       <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
+      <!-- <mat-icon>check_box</mat-icon>Multiple Choice  -->
     </a>
   </mat-menu>
   <div class="answers ml-32">
     <h3>Answers</h3>
     <div class="answers-content">
       <div class="answers-item" formArrayName="answersForm"
-      *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
+        *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
         <app-answers-form [answersForm]=questionForm.controls.answersForm.controls[i]></app-answers-form>
       </div>
     </div>
