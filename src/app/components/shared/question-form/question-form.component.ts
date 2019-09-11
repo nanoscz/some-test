@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-question-form',
@@ -13,7 +13,7 @@ export class QuestionFormComponent implements OnInit {
   @Input() numberQuestion: number;
   @Output() deleteQuestion = new EventEmitter();
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     const answersForm = <FormArray>this.questionForm.controls['answersForm'];
@@ -26,11 +26,16 @@ export class QuestionFormComponent implements OnInit {
       answersForm.push(newGroup);
     }
   }
-  clearQuestion() {
-    console.log(this.numberQuestion);
+  clearQuestion(): void {
     this.deleteQuestion.emit({ index: this.numberQuestion });
+    this.showMessage(`Question #${this.numberQuestion + 1} has been deleted.`, 2000);
   }
-  getErrorMessage(type) {
+
+  showMessage(msg: string, duration: number) {
+    this._snackBar.open(msg, null, { duration });
+  }
+
+  getErrorMessage(type): string {
     return this.questionForm.controls[type].hasError('required') ? 'You must enter a value' : '';
   }
 }
