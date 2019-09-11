@@ -14,4 +14,7 @@ export class AnswersFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  getErrorMessage(type) {
+    return this.answersForm.controls[type].hasError('required') ? 'You must enter a value' : '';
+  }
 }

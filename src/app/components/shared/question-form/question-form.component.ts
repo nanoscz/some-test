@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
@@ -18,10 +18,14 @@ export class QuestionFormComponent implements OnInit {
     for (let index = 0; index < 3; index++) {
       const newGroup = this.fb.group({
         text: ['', [Validators.required]],
-        points: [0, [Validators.required]],
+        points: ['', [Validators.required]],
         question_id: null
       });
       answersForm.push(newGroup);
     }
+  }
+
+  getErrorMessage(type) {
+    return this.questionForm.controls[type].hasError('required') ? 'You must enter a value' : '';
   }
 }

@@ -9,14 +9,16 @@
       <!-- <mat-form-field>
         <input matInput placeholder="Name File" value="some-test.jpg">
       </mat-form-field>
-
+    
       <button mat-button>Add imagen</button> -->
+      <!-- {{ answersForm.controls.text.invalid }} -->
       <mat-form-field>
-        <input matInput placeholder="Answers" formControlName="text">
+        <input matInput placeholder="The answer is" formControlName="text" required>
+        <mat-error *ngIf="answersForm.controls.text.invalid">{{getErrorMessage('text')}}</mat-error>
       </mat-form-field>
-
       <mat-form-field>
-        <input matInput type="number" placeholder="points" formControlName="points">
+        <input matInput type="number" placeholder="points" formControlName="points" required>
+        <mat-error *ngIf="answersForm.controls.points.invalid">{{getErrorMessage('points')}}</mat-error>
       </mat-form-field>
     </div>
   </div>

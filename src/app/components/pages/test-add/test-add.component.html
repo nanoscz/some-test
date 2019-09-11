@@ -1,6 +1,6 @@
 <div class="wrapper">
   <h2>New Test</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate> Form Valid: {{ form.valid }}
     <!-- Form test -->
     <div class="test">
       <mat-form-field>

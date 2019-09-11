@@ -31,11 +31,12 @@ export class TestAddComponent implements OnInit {
       questionsForm: this.fb.array([])
     });
     this.addQuestion();
-    console.log(this.form.controls.name);
   }
 
   onSubmit() {
-    console.log(this.form, this.form.valid);
+    this.form.markAllAsTouched();
+    console.log('form', this.form);
+    console.log(this.form.value);
   }
 
   getErrorMessage(type) {
@@ -46,7 +47,6 @@ export class TestAddComponent implements OnInit {
     const questionsForm = <FormArray>this.form.controls['questionsForm'];
     const newGroup = this.fb.group({
       query: ['', [Validators.required]],
-      number: [0, [Validators.required]],
       multiple: [false],
       answersForm: this.fb.array([])
     });

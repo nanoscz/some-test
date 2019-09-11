@@ -2,7 +2,8 @@
   <div class="query">
     <span> {{ numberQuestion }}.- </span>
     <mat-form-field>
-      <input matInput placeholder="What is the question?" formControlName="query">
+      <input matInput placeholder="What is the question?" formControlName="query" required>
+      <mat-error *ngIf="questionForm.controls.query.invalid">{{getErrorMessage('query')}}</mat-error>
     </mat-form-field>
     <a mat-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
