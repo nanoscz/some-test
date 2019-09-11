@@ -1,0 +1,18 @@
+.query {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .mat-form-field {
+    margin-left: 10px;
+    flex: 1 0;
+  }
+}
+
+.ml-32 {
+  margin-left: 32px;
+}
+.query-options {
+  .mat-checkbox {
+    margin-left: 10px;
+  }
+}

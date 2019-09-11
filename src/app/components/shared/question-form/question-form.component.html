@@ -1,0 +1,15 @@
+<form [formGroup]="questionForm">
+  <div class="query">
+    <span> {{ numberQuestion }}.- </span>
+    <mat-form-field>
+      <input matInput placeholder="What is the question?" formControlName="query">
+    </mat-form-field>
+  </div>
+  <div class="query-options ml-32">
+    <mat-form-field>
+      <input (change)="changeInput($event)" formControlName="number"
+        type="number" min="2" max="5" matInput placeholder="Number of responses">
+    </mat-form-field>
+    <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
+  </div>
+</form>

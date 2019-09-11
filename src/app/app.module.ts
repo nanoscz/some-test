@@ -17,6 +17,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RegisterComponent } from './components/register/register.component';
 
+/** Components shared */
+import { QuestionFormComponent } from './components/shared/question-form/question-form.component';
+
 /** Services */
 import { UserService } from './services/user.service';
 import { LocalStorageService } from './services/local-storage.service';
@@ -26,6 +29,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InternalServerComponent } from './components/internal-server/internal-server.component';
 import { TestComponent } from './components/pages/test/test.component';
 import { TestAddComponent } from './components/pages/test-add/test-add.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { TestAddComponent } from './components/pages/test-add/test-add.component
     NotFoundComponent,
     InternalServerComponent,
     TestComponent,
-    TestAddComponent
+    TestAddComponent,
+    QuestionFormComponent
   ],
   imports: [
   BrowserModule,
