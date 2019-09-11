@@ -19,9 +19,14 @@
       <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
     </a>
   </mat-menu>
-  <div formArrayName="answersForm"
-    *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
-    <app-answers-form [answersForm]=questionForm.controls.answersForm.controls[i]></app-answers-form>
+  <div class="answers ml-32">
+    <h3>Answers</h3>
+    <div class="answers-content">
+      <div class="answers-item" formArrayName="answersForm"
+      *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
+        <app-answers-form [answersForm]=questionForm.controls.answersForm.controls[i]></app-answers-form>
+      </div>
+    </div>
   </div>
 
 </form>

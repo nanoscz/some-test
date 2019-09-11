@@ -17,18 +17,11 @@ export class QuestionFormComponent implements OnInit {
     const answersForm = <FormArray>this.questionForm.controls['answersForm'];
     for (let index = 0; index < 3; index++) {
       const newGroup = this.fb.group({
-        text: '',
-        point: [0],
+        text: ['', [Validators.required]],
+        points: [0, [Validators.required]],
         question_id: null
       });
       answersForm.push(newGroup);
     }
-    console.log(this.questionForm);
-  }
-
-  changeInput(event) {
-    const value = parseInt(event.target.value, 10);
-    console.log(value);
-
   }
 }

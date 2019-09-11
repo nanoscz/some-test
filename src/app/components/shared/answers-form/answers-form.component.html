@@ -1,22 +1,23 @@
-<div class="answers ml-32">
-  <p>ANSWER</p>
-  <div class="answers-content">
-    <div class="answers-item" >
-      <div class="item-img">
-        <div class="data-img">
-          <img src="../../../../assets/images/figure.png" alt="imagen">
-        </div>
+<form [formGroup]="answersForm">
+  <div class="answers-form">
+    <!-- <div class="item-img">
+      <div class="data-img">
+        <img src="../../../../assets/images/figure.png" alt="imagen">
       </div>
-      <mat-form-field>
+    </div> -->
+    <div class="item-input">
+      <!-- <mat-form-field>
         <input matInput placeholder="Name File" value="some-test.jpg">
       </mat-form-field>
-      <button mat-button>Add imagen</button>
+
+      <button mat-button>Add imagen</button> -->
       <mat-form-field>
-        <input matInput placeholder="Answers">
+        <input matInput placeholder="Answers" formControlName="text">
       </mat-form-field>
+
       <mat-form-field>
-        <input matInput type="number" placeholder="points">
+        <input matInput type="number" placeholder="points" formControlName="points">
       </mat-form-field>
     </div>
   </div>
-</div>
+</form>

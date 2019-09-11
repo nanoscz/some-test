@@ -16,3 +16,24 @@
     margin-left: 10px;
   }
 }
+.answers {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.answers-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+  border-radius: 3px;
+}
+
+.answers-item {
+  flex: 0 0 300px;
+  border-style: dotted;
+  border-color: #000;
+  border-width: 1.5px;
+  margin-bottom: 2em;
+}
+
