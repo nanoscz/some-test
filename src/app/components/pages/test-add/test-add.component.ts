@@ -31,10 +31,15 @@ export class TestAddComponent implements OnInit {
       questionsForm: this.fb.array([])
     });
     this.addQuestion();
+    console.log(this.form.controls.name);
   }
 
   onSubmit() {
-    console.log(this.form.value, this.form.valid);
+    console.log(this.form, this.form.valid);
+  }
+
+  getErrorMessage(type) {
+    return this.form.controls[type].hasError('required') ? 'You must enter a value' : '';
   }
 
   addQuestion() {

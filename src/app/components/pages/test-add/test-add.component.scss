@@ -1,6 +1,14 @@
 .test {
   display: flex;
-  flex-direction: column;
+  .mat-form-field {
+    flex: 1 0;
+  }
+  .mat-form-field:nth-child(1) {
+    margin-right: 5px;
+  }
+  .mat-form-field:nth-child(2) {
+    margin-left: 5px;
+  }
 }
 
 .questionnaire-title {
@@ -18,20 +26,6 @@
     color:red;
   }
 }
-
-
-// .data-img:nth-child(1) {
-//   // background: red;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// .data-img:nth-child(2) {
-//   // background: blue;
-//   display: flex;
-  
-// }
-
 .form-action {
   display: flex;
   margin: 50px 0;
@@ -41,5 +35,15 @@
 .btn-actions {
   a:nth-child(1) {
     color: green;
+  }
+}
+
+@media (max-width: 600px) {
+  .test {
+    display: flex;
+    flex-direction: column;
+    // .mat-form-field {
+    //   flex: 1 0;
+    // }
   }
 }

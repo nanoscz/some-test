@@ -4,10 +4,12 @@
     <!-- Form test -->
     <div class="test">
       <mat-form-field>
-        <input matInput placeholder="Name" formControlName="name">
+        <input matInput placeholder="Name" formControlName="name" required>
+        <mat-error *ngIf="form.controls.name.invalid">{{getErrorMessage('name')}}</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Description" formControlName="description">
+        <input matInput placeholder="Description" formControlName="description" required>
+        <mat-error *ngIf="form.controls.name.invalid">{{getErrorMessage('description')}}</mat-error>
       </mat-form-field>
     </div>
 
