@@ -13,25 +13,21 @@
     <div class="answers-title">
       <div class="answers-subtitle">
         <h3>Answers</h3>
-        <a (click)="addAnswers()">
-          <mat-icon>add_box</mat-icon>
-        </a>
       </div>
       <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
     </div>
     <div class="answers-content">
-      <div class="empty" *ngIf="!questionForm.controls['answersForm'].controls.length">
-        <a mat-button (click)="addAnswers()">
-          <mat-icon class="icon-display">add</mat-icon>
-          Add Answers
-        </a>
-      </div>
       <div class="answers-item" formArrayName="answersForm"
         *ngFor="let control of questionForm.controls['answersForm'].controls; let i = index">
 
         <app-answers-form [answersForm]=questionForm.controls.answersForm.controls[i]></app-answers-form>
         <div class="item-actions">
           <a mat-button (click)="removeAnswers(i)"> DELETE </a>
+        </div>
+      </div>
+      <div class="answers-item" matRipple [matRippleCentered]="centered">
+        <div class="ripple" (click)="addAnswers()">
+          <mat-icon class="icon-display">add</mat-icon>
         </div>
       </div>
     </div>

@@ -12,7 +12,8 @@ import {
   MatCheckboxModule,
   MatButtonToggleModule,
   MatMenuModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatRippleModule
  } from '@angular/material';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -30,7 +31,8 @@ const modules = [
   MatCheckboxModule,
   MatButtonToggleModule,
   MatMenuModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatRippleModule
 ];
 
 @NgModule({
