@@ -28,15 +28,16 @@ export class TestAddComponent implements OnInit {
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
       type: ['normal', [Validators.required]],
-      questionsForm: this.fb.array([])
+      questions: this.fb.array([])
     });
+
     this.addQuestion();
   }
 
   onSubmit() {
     this.form.markAllAsTouched();
-    console.log('form', this.form);
-    console.log(this.form.value);
+    const formData = this.form.value;
+    console.log(formData);
   }
 
   getErrorMessage(type) {
@@ -45,19 +46,18 @@ export class TestAddComponent implements OnInit {
 
   deleteQuestion($event) {
     const index = $event.index;
-    const questionsForm = <FormArray>this.form.controls['questionsForm'];
-    questionsForm.removeAt(index);
+    const questions = <FormArray>this.form.controls['questions'];
+    questions.removeAt(index);
   }
   addQuestion() {
-    const questionsForm = <FormArray>this.form.controls['questionsForm'];
+    const questions = <FormArray>this.form.controls['questions'];
     const newGroup = this.fb.group({
       query: ['', [Validators.required]],
       multiple: [false],
-      answersForm: this.fb.array([])
+      answers: this.fb.array([])
     });
-    questionsForm.push(newGroup);
+    questions.push(newGroup);
   }
-
 
   toBack() {
     this.router.navigate(['/dashboard/test']);

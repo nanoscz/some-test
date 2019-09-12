@@ -8,13 +8,13 @@ import { FormGroup } from '@angular/forms';
 })
 export class AnswersFormComponent implements OnInit {
 
-  @Input() answersForm: FormGroup;
+  @Input() answers: FormGroup;
   constructor() { }
 
   ngOnInit() {
   }
 
   getErrorMessage(type) {
-    return this.answersForm.controls[type].hasError('required') ? 'You must enter a value' : '';
+    return this.answers.controls[type].hasError('required') ? 'You must enter a value' : '';
   }
 }
