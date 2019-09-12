@@ -22,14 +22,12 @@
   }
 }
 .form-action {
+  // background: red;
+  padding: 1rem 0;
   display: flex;
-  margin: 50px 0;
-  justify-content: space-between;
-}
-
-.btn-actions {
-  a:nth-child(1) {
-    color: green;
+  justify-content: flex-end;
+  a:nth-child(2){
+    color:green;
   }
 }
 
@@ -37,5 +35,8 @@
   .test {
     display: flex;
     flex-direction: column;
+  }
+  .form-action {
+    justify-content: space-between;
   }
 }

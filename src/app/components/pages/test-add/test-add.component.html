@@ -24,15 +24,11 @@
           [numberQuestion]="i" (deleteQuestion)="deleteQuestion($event)">
         </app-question-form>
     </div>
-
+    <mat-divider></mat-divider>
     <div class="form-action">
       <a mat-button (click)="toBack()"> CANCEL </a>
-      <div class="btn-actions">
-        
-        <a mat-button (click)="addQuestion()"> ADD </a>
-        <button mat-button color="primary"> SAVE </button>
-      </div>
+      <a mat-button (click)="addQuestion()"> ADD QUESTION </a>
+      <button mat-button color="primary"> SAVE </button>
     </div>
-
   </form>
 </div>
