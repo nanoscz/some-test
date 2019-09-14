@@ -14,7 +14,7 @@ export class QuestionnaireService {
       .catch(this.handleError);
   }
 
-  save(questionnaire: string) {
+  save(questionnaire: any) {
     return this.http.post(this.baseUrl, questionnaire)
       .toPromise()
       .catch(this.handleError);
