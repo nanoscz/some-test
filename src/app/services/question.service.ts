@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class QuestionService {
-  baseUrl: '/v1/questions';
+  baseUrl = '/v1/questions';
   constructor(public http: HttpClient) { }
 
   findAll() {
