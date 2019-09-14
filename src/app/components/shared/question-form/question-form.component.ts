@@ -22,8 +22,7 @@ export class QuestionFormComponent implements OnInit {
     const answers = <FormArray>this.questions.controls['answers'];
     const newGroup = this.fb.group({
       text: ['', [Validators.required]],
-      points: [0, [Validators.required]],
-      question_id: null
+      points: [0, [Validators.required]]
     });
     answers.push(newGroup);
   }
