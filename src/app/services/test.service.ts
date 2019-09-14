@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Test } from '../interfaces/resources.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,12 @@ export class TestService {
       .catch(this.handleError);
   }
 
-  save(test: any) {
+  /**
+   * You must send a Test object
+   * @param Test Object Test
+   * @returns {Promise} Promise Object
+   */
+  save(test: Test): Promise<any> {
     return this.http.post(this.baseUrl, test)
       .toPromise()
       .catch(this.handleError);
