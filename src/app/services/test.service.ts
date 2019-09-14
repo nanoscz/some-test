@@ -24,7 +24,7 @@ export class TestService {
   /**
    * You must send a Test object
    * @param Test Object Test
-   * @returns {Promise} Promise Object
+   * @returns Promise Promise Object
    */
   save(test: Test): Promise<any> {
     return this.http.post(this.baseUrl, test)
