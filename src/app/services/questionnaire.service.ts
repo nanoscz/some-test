@@ -8,8 +8,8 @@ export class QuestionnaireService {
   baseUrl = '/v1/questionnaire';
   constructor(public http: HttpClient) { }
 
-  findOne(uuidTest: string) {
-    return this.http.get(`${this.baseUrl}/${uuidTest}`)
+  findOne(testId: number) {
+    return this.http.get(`${this.baseUrl}/${testId}`)
       .toPromise()
       .catch(this.handleError);
   }
