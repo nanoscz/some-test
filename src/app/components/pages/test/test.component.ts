@@ -20,7 +20,12 @@ export class TestComponent implements OnInit {
     this.router.navigate([`${this.baseUrl}/add`]);
   }
 
+  toTestDetail(uuid: string) {
+    this.router.navigate([`${this.baseUrl}/${uuid}`]);
+  }
+
   handleError(error) {
     console.error(error);
   }
+
 }
