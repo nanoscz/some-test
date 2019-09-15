@@ -13,7 +13,8 @@ import {
   MatButtonToggleModule,
   MatMenuModule,
   MatSnackBarModule,
-  MatRippleModule
+  MatRippleModule,
+  MatRadioModule
  } from '@angular/material';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -32,7 +33,8 @@ const modules = [
   MatButtonToggleModule,
   MatMenuModule,
   MatSnackBarModule,
-  MatRippleModule
+  MatRippleModule,
+  MatRadioModule
 ];
 
 @NgModule({

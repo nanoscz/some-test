@@ -12,6 +12,7 @@ import { InternalServerComponent } from './components/internal-server/internal-s
 /** childrens */
 import { TestComponent } from './components/pages/test/test.component';
 import { TestAddComponent } from './components/pages/test-add/test-add.component';
+import { TestShowComponent } from './components/pages/test-show/test-show.component';
 
 /** Guards */
 import { LoginGuard } from './guards/login.guard';
@@ -25,6 +26,7 @@ const routes: Routes = [
     children: [
     { path: 'test', component: TestComponent },
     { path: 'test/add', component: TestAddComponent},
+    { path: 'test/:uuid', component: TestShowComponent },
     { path: '', redirectTo: '/dashboard/test', pathMatch: 'full'},
   ]},
   { path: 'settings', component: SettingsComponent, canActivate: [LoginGuard]},
