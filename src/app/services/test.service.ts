@@ -14,8 +14,8 @@ export class TestService {
       .catch(this.handleError);
   }
 
-  findOne(uuid: string) {
-    return this.http.get(`${this.baseUrl}/${uuid}`)
+  findOne(id: number) {
+    return this.http.get(`${this.baseUrl}/${id}`)
       .toPromise()
       .catch(this.handleError);
   }
@@ -25,18 +25,18 @@ export class TestService {
    * @param Test Object Test
    * @returns Promise Promise Object
    */
-  save(test: Test): Promise<any> {
+  save(test: any): Promise<any> {
     return this.http.post(this.baseUrl, test)
       .toPromise()
       .catch(this.handleError);
   }
 
-  update(test: any, uuid: string) {
-    return this.http.patch(`${this.baseUrl}/${uuid}`, test);
+  update(test: any, id: number) {
+    return this.http.patch(`${this.baseUrl}/${id}`, test);
   }
 
-  delete(uuid: string) {
-    return this.http.delete(`${this.baseUrl}/${uuid}`)
+  delete(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`)
       .toPromise()
       .catch(this.handleError);
   }
