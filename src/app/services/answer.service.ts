@@ -20,12 +20,12 @@ export class AnswerService {
       .catch(this.handleError);
   }
 
-  update(answer: any, uuid: string) {
-    return this.http.patch(`${this.baseUrl}/${uuid}`, answer);
+  update(answer: any, id: number) {
+    return this.http.patch(`${this.baseUrl}/${id}`, answer);
   }
 
-  delete(uuid: string) {
-    return this.http.delete(`${this.baseUrl}/${uuid}`)
+  delete(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`)
       .toPromise()
       .catch(this.handleError);
   }
