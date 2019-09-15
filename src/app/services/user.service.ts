@@ -15,8 +15,8 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  findOne(uuid: string) {
-    return this.http.get(`${this.baseUrl}/${uuid}`)
+  findOne(id: number) {
+    return this.http.get(`${this.baseUrl}/${id}`)
       .toPromise()
       .catch(this.handleError);
   }
@@ -27,14 +27,14 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  update(uuid: string, user: any) {
-    this.http.patch(`${this.baseUrl}/${uuid}`, user)
+  update(id: number, user: any) {
+    this.http.patch(`${this.baseUrl}/${id}`, user)
       .toPromise()
       .catch(this.handleError);
   }
 
-  delete(uuid: string) {
-    this.http.delete(`${this.baseUrl}/${uuid}`)
+  delete(id: number) {
+    this.http.delete(`${this.baseUrl}/${id}`)
       .toPromise()
       .catch(this.handleError);
   }
