@@ -14,8 +14,14 @@ export class QuestionService {
       .catch(this.handleError);
   }
 
-  findOne(uuid: string) {
-    return this.http.get(`${this.baseUrl}/${uuid}`)
+  findOne(id: number) {
+    return this.http.get(`${this.baseUrl}/${id}`)
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+  findByAnswers(id: number) {
+    return this.http.get(`${this.baseUrl}/${id}/answers`)
       .toPromise()
       .catch(this.handleError);
   }
@@ -26,14 +32,14 @@ export class QuestionService {
       .catch(this.handleError);
   }
 
-  update(question: any, uuid: string) {
-    return this.http.patch(`${this.baseUrl}/${uuid}`, question)
+  update(question: any, id: number) {
+    return this.http.patch(`${this.baseUrl}/${id}`, question)
       .toPromise()
       .catch(this.handleError);
   }
 
-  delete(uuid: string) {
-    return this.http.delete(`${this.baseUrl}/${uuid}`)
+  delete(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`)
       .toPromise()
       .catch(this.handleError);
   }
