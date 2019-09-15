@@ -16,7 +16,8 @@ export class TestShowComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe(async params => {
-      this.test = await this.questionnaireService.findOne(params.uuid).catch(this.handleError);
+      console.log(params.id)
+      this.test = await this.questionnaireService.findOne(params.id).catch(this.handleError);
       console.log(this.test);
     });
   }

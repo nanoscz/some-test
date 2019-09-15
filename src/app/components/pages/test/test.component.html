@@ -9,7 +9,7 @@
       </mat-card>
     </div>
     <div *ngFor="let test of tests" class="item-flex">
-      <mat-card (click)="toTestDetail(test.uuid)">
+      <mat-card (click)="toTestDetail(test.id)">
         <mat-card-subtitle>{{ test.name | uppercase }}</mat-card-subtitle>
         <mat-card-content>
           <p>{{ test.type }}</p>

@@ -26,7 +26,7 @@ const routes: Routes = [
     children: [
     { path: 'test', component: TestComponent },
     { path: 'test/add', component: TestAddComponent},
-    { path: 'test/:uuid', component: TestShowComponent },
+    { path: 'test/:id', component: TestShowComponent },
     { path: '', redirectTo: '/dashboard/test', pathMatch: 'full'},
   ]},
   { path: 'settings', component: SettingsComponent, canActivate: [LoginGuard]},
