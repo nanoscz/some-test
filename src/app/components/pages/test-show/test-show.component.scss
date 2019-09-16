@@ -1,47 +1,28 @@
-.mat-card-title {
+.content-test {
   display: flex;
   justify-content: space-between;
-  span:nth-child(2){
+  p > span{
+    color: rgba(0, 0, 0, 0.54);
     font-size: 12px;
-    color: #3e3e3e;
   }
 }
 
-.content-flex {
-  display: flex;
-  flex-direction: column;
-}
-
-.item-flex {
-  margin: 0.5em 0;
-  margin-bottom: 1rem;
-  flex: 1 0;
-  .item-flex-question {
+.item-flex-answers {
+  .mat-radio-group {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    span {
-      margin-left: 0.6rem;
-    }
+    flex-direction: column;
+    margin: 0 1.2rem;
   }
-  .item-flex-answers {
-    .mat-radio-group {
-      display: flex;
-      flex-direction: column;
-      margin: 0 1.2rem;
-    }
-    .mat-radio-button{
-      min-width: 100px;
-    }
-  }
-  p {
-    font-weight: bold;
+  .mat-radio-button{
+    min-width: 100px;
+    margin: 0.5rem;
   }
 }
 
-.mat-card-actions {
+.form-action {
   display: flex;
-  justify-content: flex-end;
+  margin-top: 1rem; 
+  justify-content: space-between;
   font-weight: bold;
   a:nth-child(1) {
     color: #721c24;
@@ -49,6 +30,20 @@
   a:nth-child(2) {
     color: #004085;
   }
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  margin-right: 12px;
 }
 
 @media screen and (max-width: 687px) {
