@@ -14,7 +14,11 @@ import {
   MatMenuModule,
   MatSnackBarModule,
   MatRippleModule,
-  MatRadioModule
+  MatRadioModule,
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTooltipModule
  } from '@angular/material';
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -34,7 +38,11 @@ const modules = [
   MatMenuModule,
   MatSnackBarModule,
   MatRippleModule,
-  MatRadioModule
+  MatRadioModule,
+  MatExpansionModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTooltipModule
 ];
 
 @NgModule({
