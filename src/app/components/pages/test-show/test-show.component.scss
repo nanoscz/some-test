@@ -27,6 +27,7 @@
   .item-flex-answers {
     .mat-radio-group {
       display: flex;
+      flex-direction: column;
       margin: 0 1.2rem;
     }
     .mat-radio-button{
@@ -43,6 +44,9 @@
   justify-content: flex-end;
   font-weight: bold;
   a:nth-child(1) {
+    color: #721c24;
+  }
+  a:nth-child(2) {
     color: #004085;
   }
 }
@@ -50,9 +54,5 @@
 @media screen and (max-width: 687px) {
   .content-flex {
     flex-direction: column
-  }
-  .mat-radio-group {
-    display: flex;
-    flex-direction: column;
   }
 }
