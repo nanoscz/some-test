@@ -31,8 +31,10 @@ export class TestService {
       .catch(this.handleError);
   }
 
-  update(test: any, id: number) {
-    return this.http.patch(`${this.baseUrl}/${id}`, test);
+  update(id: number, test: any) {
+    return this.http.patch(`${this.baseUrl}/${id}`, test)
+      .toPromise()
+      .catch(this.handleError);
   }
 
   delete(id: number) {
