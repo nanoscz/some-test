@@ -15,11 +15,12 @@
       <p>{{ test.test.createdAt | date }}</p>
     </div>
     <mat-action-row class="form-action">
-      <div>
-        <a mat-button (click)="toDeteleTest()" matTooltip="Delete test"> Delete </a>
-        <a mat-button matTooltip="Edit test" (click)="toEditTest(test.test.name, test.test.description, test.test.type)"> Edit </a>
-      </div>
       <a mat-button (click)="toBack()"> Cancel </a>
+      <div class="btn-style">
+        <a mat-button (click)="toDeteleTest()" matTooltip="Delete test"> Delete </a>
+        <a mat-button matTooltip="Edit test"
+          (click)="toEditTest(test.test.name, test.test.description, test.test.type)"> Edit </a>
+      </div>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
@@ -44,17 +45,38 @@
     </div>
 
     <mat-action-row class="form-action">
-      <div>
+      <div class="btn-style">
         <a mat-button (click)="toDeteleQuestion(item.question.id, i)" matTooltip="Delete question"> Delete </a>
         <a mat-button (click)="toEditQuestion(item.question)" matTooltip="Edit question"> Edit </a>
       </div>
-      <div>
+      <!-- <div>
         <button mat-button color="warn" *ngIf="i > 0" (click)="prevStep()">Previous</button>
         <button mat-button color="primary" (click)="nextStep()">
-            <span *ngIf="countQuestion != i">Next</span>
-            <span *ngIf="countQuestion == i">End</span>
+          <span *ngIf="countQuestion != i">Next</span>
+          <span *ngIf="countQuestion == i">End</span>
         </button>
-      </div>
+      </div> -->
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+
+<mat-card *ngIf="submitAddQuesiton" class="mt-1rem">
+  <mat-card-content>
+    <div>
+      <app-question-form [questions]="formQuestion" (deleteQuestion)="deleteQuestion($event)">
+      </app-question-form>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <div class="card-action">
+      <a mat-button (click)="submitAddQuesiton = !submitAddQuesiton">cancel</a>
+      <a mat-button (click)="toAddQuestion()"> Save </a>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card *ngIf="!submitAddQuesiton" class="card flex mt-1rem" matRipple [matRippleCentered]="centered"
+  (click)="submitAddQuesiton = !submitAddQuesiton">
+  <mat-icon class="icon-display">add</mat-icon>
+</mat-card>

@@ -22,8 +22,11 @@
 .form-action {
   display: flex;
   margin-top: 1rem; 
-  justify-content: space-between;
+  justify-content: flex-end;
   font-weight: bold;
+}
+
+.btn-style {
   a:nth-child(1) {
     color: #721c24;
   }
@@ -44,6 +47,43 @@
 
 mat-form-field {
   margin-right: 12px;
+}
+
+.mt-1rem {
+  margin-top: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex {
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-action-row { 
+  padding: 16px 8px;
+}
+
+.card-action {
+  margin: 0;
+  padding: 8px 0;
+  display: flex;
+  justify-content: flex-end;
+  a:nth-child(2) {
+    color: #155724;
+  }
+}
+
+.card-flex:hover {
+  cursor: pointer;
+}
+
+.icon-display {
+  color: #3f51b5;
+  transform: scale(2);
 }
 
 @media screen and (max-width: 687px) {

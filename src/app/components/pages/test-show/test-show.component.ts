@@ -9,19 +9,24 @@ import { QuestionService } from 'src/app/services/question.service';
 
 import { DialogComponent } from '../../shared/dialog/dialog.component';
 import { ComfirmComponent } from '../../shared/comfirm/comfirm.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-test-show',
   templateUrl: './test-show.component.html',
   styleUrls: ['./test-show.component.scss']
 })
+
 export class TestShowComponent implements OnInit {
   public test: any = null;
   public testId: number = null;
   public answers: any = [];
   public step = 0;
   public countQuestion = 0;
+  public formQuestion: FormGroup;
+  public submitAddQuesiton = false;
   constructor(
     private router: Router,
+    private fb: FormBuilder,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private testService: TestService,
@@ -33,10 +38,35 @@ export class TestShowComponent implements OnInit {
       this.testId = params.id;
       this.test = await this.questionnaireService.findOne(this.testId).catch(this.handleError);
       this.countQuestion = this.test.questionnaire.length - 1;
+      console.log(this.test.questionnaire);
     });
   }
 
   ngOnInit() {
+    this.formQuestion = this.fb.group({
+      query: ['', [Validators.required]],
+      multiple: [false],
+      answers: this.fb.array([])
+    });
+  }
+
+  async toAddQuestion() {
+    this.formQuestion.markAllAsTouched();
+    if (!this.formQuestion.valid) {
+      return;
+    }
+    const objQuestion = this.formQuestion.value;
+    objQuestion.answers = JSON.stringify(objQuestion.answers);
+    const question = await this.questionService.save(objQuestion).catch(this.handleError);
+    const questionnaire: Questionnaire = {
+      testId: this.testId,
+      questionId: question.id
+    };
+    await this.questionnaireService.save({ questionnaire: JSON.stringify([questionnaire]) })
+      .catch(this.handleError);
+    delete question.answers;
+    this.test.questionnaire.push({ question });
+    this.nextStep();
   }
 
   toDeteleTest() {
@@ -100,7 +130,7 @@ export class TestShowComponent implements OnInit {
   async setStep(index: number, id: number) {
     this.step = index;
     this.answers = await this.questionService.findByAnswers(id).catch(this.handleError);
-    console.log(this.answers);
+    // console.log(this.answers);
   }
 
   changeAnswers(id: number) {
@@ -123,4 +153,9 @@ export class TestShowComponent implements OnInit {
     console.error(error);
   }
 
+}
+
+export interface Questionnaire {
+  testId: number;
+  questionId: number;
 }
