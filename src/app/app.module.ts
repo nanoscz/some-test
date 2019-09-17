@@ -32,6 +32,7 @@ import { TestAddComponent } from './components/pages/test-add/test-add.component
 import { AnswersFormComponent } from './components/shared/answers-form/answers-form.component';
 import { TestShowComponent } from './components/pages/test-show/test-show.component';
 import { DialogComponent } from './components/shared/dialog/dialog.component';
+import { ComfirmComponent } from './components/shared/comfirm/comfirm.component';
 
 
 @NgModule({
@@ -49,9 +50,10 @@ import { DialogComponent } from './components/shared/dialog/dialog.component';
     QuestionFormComponent,
     AnswersFormComponent,
     TestShowComponent,
-    DialogComponent
+    DialogComponent,
+    ComfirmComponent
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, ComfirmComponent],
   imports: [
   BrowserModule,
     BrowserAnimationsModule,

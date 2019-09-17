@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 import { QuestionnaireService } from 'src/app/services/questionnaire.service';
 import { TestService } from 'src/app/services/test.service';
 import { QuestionService } from 'src/app/services/question.service';
 
 import { DialogComponent } from '../../shared/dialog/dialog.component';
-
+import { ComfirmComponent } from '../../shared/comfirm/comfirm.component';
 @Component({
   selector: 'app-test-show',
   templateUrl: './test-show.component.html',
@@ -23,6 +23,7 @@ export class TestShowComponent implements OnInit {
   constructor(
     private router: Router,
     public dialog: MatDialog,
+    private _snackBar: MatSnackBar,
     private testService: TestService,
     private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
@@ -39,11 +40,18 @@ export class TestShowComponent implements OnInit {
   }
 
   toDeteleTest() {
-    this.testService.delete(this.testId)
-      .then(() => {
+    const dialogRef = this.dialog.open(ComfirmComponent, {
+      width: '400px',
+      data: { query: 'are you sure to eliminate the test?' }
+    });
+    dialogRef.afterClosed().subscribe(async remove => {
+      if (remove) {
+        await this.testService.delete(this.testId).catch(this.handleError);
+        this.showMessage('the test has been successfully deleted.');
         this.toBack();
-      })
-      .catch(this.handleError);
+      }
+      console.log('The dialog was closed');
+    });
   }
 
   toEditTest(name: string, description: string, type: string) {
@@ -56,7 +64,7 @@ export class TestShowComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '400px',
-      data: {test, entity: 'test'}
+      data: { test, entity: 'test' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -85,6 +93,10 @@ export class TestShowComponent implements OnInit {
 
   prevStep() {
     this.step--;
+  }
+
+  showMessage(msg: string, duration: number = 2000) {
+    this._snackBar.open(msg, null, { duration });
   }
 
   handleError(error) {
