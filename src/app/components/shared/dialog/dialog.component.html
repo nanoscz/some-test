@@ -1,0 +1,20 @@
+<div>
+  <form [formGroup]="form" class="form-dialog" (ngSubmit)="onEdit()">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" required>
+      <mat-error *ngIf="form.controls.name.invalid">{{getErrorMessage('name')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+      <mat-error *ngIf="form.controls.description.invalid">{{getErrorMessage('description')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Type" formControlName="type" required>
+      <mat-error *ngIf="form.controls.type.invalid">{{getErrorMessage('type')}}</mat-error>
+    </mat-form-field>
+    <div class="form-action">
+      <a mat-button (click)="close()"> CANCEL </a>
+      <button mat-button color="primary"> EDIT </button>
+    </div>
+  </form>
+</div>
