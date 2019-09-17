@@ -42,12 +42,12 @@ export class TestShowComponent implements OnInit {
   toDeteleTest() {
     const dialogRef = this.dialog.open(ComfirmComponent, {
       width: '400px',
-      data: { query: 'are you sure to eliminate the test?' }
+      data: { query: 'Are you sure to eliminate the test?' }
     });
     dialogRef.afterClosed().subscribe(async remove => {
       if (remove) {
         await this.testService.delete(this.testId).catch(this.handleError);
-        this.showMessage('the test has been successfully deleted.');
+        this.showMessage('The test has been successfully deleted.');
         this.toBack();
       }
       console.log('The dialog was closed');
@@ -74,6 +74,25 @@ export class TestShowComponent implements OnInit {
     });
   }
 
+  toDeteleQuestion(id: number, index: number) {
+    const dialogRef = this.dialog.open(ComfirmComponent, {
+      width: '400px',
+      data: { query: 'Are you sure to eliminate the question?' }
+    });
+    dialogRef.afterClosed().subscribe(async remove => {
+      if (remove) {
+        await this.questionService.delete(id).catch(this.handleError);
+        this.test.questionnaire.splice(index, 1);
+        this.showMessage('The test has been successfully deleted.');
+      }
+      console.log('The dialog was closed');
+    });
+  }
+
+  toEditQuestion(question) {
+    console.log(question);
+  }
+
   toBack() {
     this.router.navigate(['/dashboard/test']);
   }
@@ -87,6 +106,7 @@ export class TestShowComponent implements OnInit {
   changeAnswers(id: number) {
     console.log(id);
   }
+
   nextStep() {
     this.step++;
   }

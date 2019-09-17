@@ -45,8 +45,8 @@
 
     <mat-action-row class="form-action">
       <div>
-        <a mat-button matTooltip="Delete question"> Delete </a>
-        <a mat-button matTooltip="Edit question"> Edit </a>
+        <a mat-button (click)="toDeteleQuestion(item.question.id, i)" matTooltip="Delete question"> Delete </a>
+        <a mat-button (click)="toEditQuestion(item.question)" matTooltip="Edit question"> Edit </a>
       </div>
       <div>
         <button mat-button color="warn" *ngIf="i > 0" (click)="prevStep()">Previous</button>
