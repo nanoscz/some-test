@@ -21,7 +21,7 @@
     <div class="questionnaire-content" formArrayName="questions"
          *ngFor="let control of form.controls['questions'].controls; let i = index">
          <app-question-form [questions]="form.controls.questions.controls[i]"
-          [numberQuestion]="i" (deleteQuestion)="deleteQuestion($event)">
+          [numberQuestion]="i + 1" (deleteQuestion)="deleteQuestion($event)">
         </app-question-form>
     </div>
     <mat-divider></mat-divider>

@@ -1,11 +1,11 @@
 <form [formGroup]="questions">
   <div class="query">
-    <span> {{ numberQuestion + 1 }}.- </span>
+    <span *ngIf="numberQuestion > 0"> {{ numberQuestion }}.- </span>
     <mat-form-field>
       <input matInput placeholder="What is the question?" formControlName="query" required>
       <mat-error *ngIf="questions.controls.query.invalid">{{getErrorMessage('query')}}</mat-error>
     </mat-form-field>
-    <a mat-icon-button (click)="clearQuestion()">
+    <a *ngIf="numberQuestion > 0" mat-icon-button (click)="clearQuestion()">
       <mat-icon>clear</mat-icon>
     </a>
   </div>

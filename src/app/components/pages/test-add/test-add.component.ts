@@ -22,7 +22,7 @@ export class TestAddComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private testService: TestService,
     private questionService: QuestionService,
-    private quesionnaireService: QuestionnaireService
+    private questionnaireService: QuestionnaireService
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +32,16 @@ export class TestAddComponent implements OnInit {
       type: ['normal', [Validators.required]],
       questions: this.fb.array([])
     });
+  }
+
+  addQuestion() {
+    const questions = <FormArray>this.form.controls['questions'];
+    const newGroup = this.fb.group({
+      query: ['', [Validators.required]],
+      multiple: [false],
+      answers: this.fb.array([])
+    });
+    questions.push(newGroup);
   }
 
   async onSubmit() {
@@ -69,7 +79,7 @@ export class TestAddComponent implements OnInit {
         });
       }
       const questionnaire = JSON.stringify(arrQuestionnaire);
-      await this.quesionnaireService.save({ questionnaire }).catch(this.handleError);
+      await this.questionnaireService.save({ questionnaire }).catch(this.handleError);
       this.showMessage('Questionnaire created correctly.', 2500);
       this.toBack();
     });
@@ -91,16 +101,6 @@ export class TestAddComponent implements OnInit {
     const index = $event.index;
     const questions = <FormArray>this.form.controls['questions'];
     questions.removeAt(index);
-  }
-
-  addQuestion() {
-    const questions = <FormArray>this.form.controls['questions'];
-    const newGroup = this.fb.group({
-      query: ['', [Validators.required]],
-      multiple: [false],
-      answers: this.fb.array([])
-    });
-    questions.push(newGroup);
   }
 
   toBack() {
