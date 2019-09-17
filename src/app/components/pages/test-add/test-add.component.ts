@@ -40,13 +40,13 @@ export class TestAddComponent implements OnInit {
       return;
     }
     const formData = this.form.value;
-    const { name, type, questions } = formData;
+    const { name, type, description, questions } = formData;
     if (!questions.length) {
       this.showMessage('You must add questions ot the questionnaire.', 2000);
       return;
     }
     const user_id = this.getUserId();
-    const test = { name, type, user_id };
+    const test = { name, description, type, user_id };
     const response = await this.testService.save(test).catch(this.handleError);
     const testId = response[0].id;
     const questionsPromise = [];
