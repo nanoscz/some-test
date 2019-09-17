@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { MatDialog } from '@angular/material';
+
 import { QuestionnaireService } from 'src/app/services/questionnaire.service';
 import { TestService } from 'src/app/services/test.service';
 import { QuestionService } from 'src/app/services/question.service';
+
+import { DialogComponent } from '../../shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-test-show',
@@ -18,6 +22,7 @@ export class TestShowComponent implements OnInit {
   public countQuestion = 0;
   constructor(
     private router: Router,
+    public dialog: MatDialog,
     private testService: TestService,
     private activatedRoute: ActivatedRoute,
     private questionService: QuestionService,
@@ -33,12 +38,32 @@ export class TestShowComponent implements OnInit {
   ngOnInit() {
   }
 
-  toDetele() {
+  toDeteleTest() {
     this.testService.delete(this.testId)
       .then(() => {
         this.toBack();
       })
       .catch(this.handleError);
+  }
+
+  toEditTest(name: string, description: string, type: string) {
+    const test = {
+      id: this.testId,
+      name,
+      description,
+      type
+    };
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: {test, entity: 'test'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.test.test.name = result.name;
+      this.test.test.description = result.description;
+      console.log('The dialog was closed');
+    });
   }
 
   toBack() {

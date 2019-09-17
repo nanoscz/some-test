@@ -6,18 +6,18 @@
         {{ test.test.name | titlecase }}
       </mat-panel-title>
       <mat-panel-description>
-        {{ test.test.type | titlecase }}
+        {{ test.test.description | titlecase }}
         <mat-icon>account_circle</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="content-test">
-      <p>{{ test.test.user.fullname | titlecase }} <span>({{test.test.user.email}})</span></p>
+      <p>By {{ test.test.user.fullname | titlecase }} <span>({{test.test.user.email}})</span></p>
       <p>{{ test.test.createdAt | date }}</p>
     </div>
     <mat-action-row class="form-action">
       <div>
-        <a mat-button (click)="toDetele()" matTooltip="Delete test"> Delete </a>
-        <a mat-button matTooltip="Edit test"> Edit </a>
+        <a mat-button (click)="toDeteleTest()" matTooltip="Delete test"> Delete </a>
+        <a mat-button matTooltip="Edit test" (click)="toEditTest(test.test.name, test.test.description, test.test.type)"> Edit </a>
       </div>
       <a mat-button (click)="toBack()"> Cancel </a>
     </mat-action-row>
