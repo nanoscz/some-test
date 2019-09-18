@@ -38,7 +38,6 @@ export class TestShowComponent implements OnInit {
       this.testId = params.id;
       this.test = await this.questionnaireService.findOne(this.testId).catch(this.handleError);
       this.countQuestion = this.test.questionnaire.length - 1;
-      console.log(this.test.questionnaire);
     });
   }
 
@@ -66,7 +65,9 @@ export class TestShowComponent implements OnInit {
       .catch(this.handleError);
     delete question.answers;
     this.test.questionnaire.push({ question });
-    this.nextStep();
+    this.setStep(this.test.questionnaire.length - 1, question.id);
+    this.showMessage('question added correctly.');
+    this.formQuestion.reset();
   }
 
   toDeteleTest() {
@@ -128,9 +129,18 @@ export class TestShowComponent implements OnInit {
   }
 
   async setStep(index: number, id: number) {
+    console.log(index, id);
     this.step = index;
     this.answers = await this.questionService.findByAnswers(id).catch(this.handleError);
-    // console.log(this.answers);
+    const arrayAnswersPoint = this.answers.map(item => item.points);
+    this.maxPoint(arrayAnswersPoint);
+  }
+
+  maxPoint(arrayAnswersPoint) {
+    const max = Math.max(...arrayAnswersPoint);
+    const idx = arrayAnswersPoint.findIndex(item => item === max);
+    this.answers.map(item => item.checked = false);
+    this.answers[idx].checked = true;
   }
 
   changeAnswers(id: number) {

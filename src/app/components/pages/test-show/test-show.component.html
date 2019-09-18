@@ -37,7 +37,7 @@
     <div class="item-flex-answers">
       <mat-radio-group>
         <span *ngFor="let item of answers">
-          <mat-radio-button (click)="changeAnswers(item.id)" [value]="item.id" [checked]="item.points == 3">
+          <mat-radio-button (click)="changeAnswers(item.id)" [value]="item.id" [checked]="item.checked">
             {{ item.text }}
           </mat-radio-button>
         </span>
