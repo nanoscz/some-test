@@ -1,6 +1,6 @@
-<div class="wrapper">
-  <h2>New Test</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate> Form Valid: {{ form.valid }}
+<h2>New Test</h2>
+<mat-card>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
     <!-- Form test -->
     <div class="test">
       <mat-form-field>
@@ -14,21 +14,21 @@
     </div>
 
     <div class="questionnaire-title">
-      <h2>Questionnaire</h2>
+      <h3>Questionnaire</h3>
     </div>
-
     <!-- quesrion form -->
-    <div class="questionnaire-content" formArrayName="questions"
-         *ngFor="let control of form.controls['questions'].controls; let i = index">
-         <app-question-form [questions]="form.controls.questions.controls[i]"
-          [numberQuestion]="i + 1" (deleteQuestion)="deleteQuestion($event)">
+    <mat-card class="questionnaire-content" formArrayName="questions"
+      *ngFor="let control of form.controls['questions'].controls; let i = index">
+      <mat-card-content>
+        <app-question-form [questions]="form.controls.questions.controls[i]" [numberQuestion]="i + 1"
+          (deleteQuestion)="deleteQuestion($event)">
         </app-question-form>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="form-action">
+      </mat-card-content>
+    </mat-card>
+    <mat-card-actions>
       <a mat-button (click)="toBack()"> CANCEL </a>
       <a mat-button (click)="addQuestion()"> ADD QUESTION </a>
       <button mat-button color="primary"> SAVE </button>
-    </div>
+    </mat-card-actions>
   </form>
-</div>
+</mat-card>

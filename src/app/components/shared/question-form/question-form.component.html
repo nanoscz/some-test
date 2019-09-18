@@ -9,28 +9,34 @@
       <mat-icon>clear</mat-icon>
     </a>
   </div>
-  <div class="answers ml-answers">
+  <div class="answers">
     <div class="answers-title">
       <div class="answers-subtitle">
         <h3>Answers</h3>
       </div>
       <mat-checkbox formControlName="multiple"> Multiple Choice </mat-checkbox>
     </div>
-    <div class="answers-content">
-      <div class="answers-item" formArrayName="answers"
+    <div class="content-flex">
+
+      <div class="item-flex" formArrayName="answers"
         *ngFor="let control of questions.controls['answers'].controls; let i = index">
 
-        <app-answers-form [answers]=questions.controls.answers.controls[i]></app-answers-form>
-        <div class="item-actions">
-          <a mat-button (click)="removeAnswers(i)"> DELETE </a>
-        </div>
+        <mat-card>
+          <app-answers-form [answers]=questions.controls.answers.controls[i]></app-answers-form>
+          <div class="item-actions">
+            <a mat-button (click)="removeAnswers(i)"> DELETE </a>
+          </div>
+        </mat-card>
       </div>
-      <div class="answers-item" matRipple [matRippleCentered]="centered">
-        <div class="ripple" (click)="addAnswers()">
-          <mat-icon class="icon-display">add</mat-icon>
-        </div>
+
+      <div class="item-flex">
+        <mat-card matRipple [matRippleCentered]="centered">
+          <div class="ripple" (click)="addAnswers()">
+            <mat-icon class="icon-display">add</mat-icon>
+          </div>
+        </mat-card>
       </div>
+
     </div>
   </div>
-
 </form>

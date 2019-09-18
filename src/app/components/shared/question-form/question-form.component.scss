@@ -2,12 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 0.8em;
   .mat-form-field {
-    margin-left: 10px;
     flex: 1 0;
   }
   a {
+    margin-right: -0.8rem;
     color:red;
   }
 }
@@ -37,21 +36,16 @@
   align-items: center;
 }
 
-.answers-content {
+.content-flex {
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
-  
-  border-radius: 3px;
 }
 
-.answers-item {
-  flex: 0 0 33%;
-  border-style: dotted;
-  border-color: #bdbdbd;
-  border-radius: 3px;
-  border-width: 1.5px;
-  margin-bottom: 2em;
+.item-flex {
+  max-width: 306px;
+  padding: 0.2rem;
+  flex: 1 0 300px;
 }
 
 .item-actions {
@@ -64,7 +58,6 @@
 }
 
 .ripple {
-  width: 312px;
   height: 173px;
   display: flex;
   flex-direction: column;
@@ -86,7 +79,7 @@
     justify-content: center;
     align-items: center;
   }
-  .answers-item {
+  .item-flex {
     flex: 1 0 100%;
   }
   .answers-item:last-child {
