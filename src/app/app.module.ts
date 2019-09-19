@@ -33,6 +33,7 @@ import { AnswersFormComponent } from './components/shared/answers-form/answers-f
 import { TestShowComponent } from './components/pages/test-show/test-show.component';
 import { DialogComponent } from './components/shared/dialog/dialog.component';
 import { ComfirmComponent } from './components/shared/comfirm/comfirm.component';
+import { AlphabetPipe } from './pipes/alphabet.pipe';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ComfirmComponent } from './components/shared/comfirm/comfirm.component'
     AnswersFormComponent,
     TestShowComponent,
     DialogComponent,
-    ComfirmComponent
+    ComfirmComponent,
+    AlphabetPipe
   ],
   entryComponents: [DialogComponent, ComfirmComponent],
   imports: [
