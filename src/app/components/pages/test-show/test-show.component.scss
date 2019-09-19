@@ -7,15 +7,37 @@
   }
 }
 
+.content-flex-answers {
+  margin-bottom: 5px;
+}
+
+.content-flex-answers:last-child {
+  margin-bottom: 0;
+}
+
+
 .item-flex-answers {
-  .mat-radio-group {
+  border: #dbdbdb solid 1px;
+  border-radius: 5px;
+  display: flex;
+  p:nth-child(1) {
+    flex: 0 1 5%;
     display: flex;
-    flex-direction: column;
-    margin: 0 1.2rem;
+    justify-content: center;
+    border-right: 1px solid #dbdbdb;
   }
-  .mat-radio-button{
-    min-width: 100px;
-    margin: 0.5rem;
+  p:nth-child(2) {
+    flex: 0 1 95%;
+    margin-left: 2.5%;
+  }
+}
+
+
+.checked {
+  // background-color: #C5CAE9; 
+  border-color: #303F9F;
+  p:nth-child(1) {
+    border-right: 1px solid #303F9F;
   }
 }
 

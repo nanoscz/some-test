@@ -30,18 +30,19 @@
     *ngFor="let item of test.questionnaire; let i = index">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ i + 1 }}.- {{ item.question.query | titlecase }}
+        {{ i + 1 }}.- {{ item.question.query }}
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <div class="item-flex-answers">
-      <mat-radio-group>
-        <span *ngFor="let item of answers">
-          <mat-radio-button (click)="changeAnswers(item.id)" [value]="item.id" [checked]="item.checked">
-            {{ item.text }}
-          </mat-radio-button>
-        </span>
-      </mat-radio-group>
+    <div class="content-flex-answers" *ngFor="let item of answers; let i = index">
+      <div class="item-flex-answers" [ngClass]="{'checked': item.checked}">
+        <p>
+          {{ i | alphabet }}.
+        </p>
+        <p (click)="changeAnswers(item.id)">
+          {{ item.text | titlecase }}
+        </p>
+      </div>
     </div>
 
     <mat-action-row class="form-action">
